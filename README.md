@@ -1,4 +1,4 @@
-# nxgn-tools
+# nxgn_tools
 
 This repository holds scripts I have written for working with next-generation sequencing (NGS) data. Manuals for each script are described below.
 
@@ -9,7 +9,7 @@ This repository holds scripts I have written for working with next-generation se
 The `fasta2line.py` script converts a fasta file with multiple sequence lines per entry to a fasta file with one sequence line per entry.
 
 
-## kmer_tools
+## Kmer_tools
 
 
 **knorm**
