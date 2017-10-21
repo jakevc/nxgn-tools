@@ -19,7 +19,6 @@ def get_arguments():
                         required=False,
                         type=argparse.FileType('wt',
                                                encoding='UTF-8 '))
-
     return parser.parse_args()
 
 
@@ -32,20 +31,28 @@ infile = args.infile.name
 # get output file
 outfile = args.infile.name+'_2li'
 
+# firstline case
+firstline = True
 # open files for reading and writing
 with open(infile, 'r') as i, open(outfile, 'w') as o:
     # loop over the file
+    NR = 0
     for line in i:
         # for only the firstline
-        firstline = True
         if firstline and line.startswith('>'):
-            o.write('\n'+line)
+            o.write(line)
             firstline = False
-        # if write header lines
+            NR += 1
+        # elif header lines
         elif line.startswith('>'):
-            o.write(line+'\n')
+            o.write('\n'+line)
+            NR += 1
         # write sequence lines
         else:
             if line.startswith('>') is False and line != '':
                 line = line.strip()
                 o.write(line)
+            NR += 1
+            if NR % 1000 == 0:
+                print(f'Processed line: {NR}')
+    print('Done')
