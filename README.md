@@ -4,6 +4,10 @@ This repository holds scripts I have written for working with next-generation se
 
 ## Fasta_tools
 
+**length_dist.py**
+
+`length_dist.py` generates a read length frequency distribution from an input fasta file.
+
 **fasta2line**
 
 The `fasta2line.py` script converts a fasta file with multiple sequence lines per entry to a fasta file with one sequence line per entry.
