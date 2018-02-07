@@ -12,6 +12,18 @@ This repository holds scripts I have written for working with next-generation se
 
 The `fasta2line.py` script converts a fasta file with multiple sequence lines per entry to a fasta file with one sequence line per entry.
 
+**common_seqs.py -h** 
+usage: common_seqs [-h] fasta [k]
+
+Determins k most common sequences with length greater than 30nts from fasta
+file, returns seq and counts
+
+positional arguments:
+  fasta       input fasta file (path)
+  k           Specify the k most common seqs. Default: 10
+
+optional arguments:
+  -h, --help  show this help message and exit
 
 ## Kmer_tools
 
@@ -42,3 +54,40 @@ The second file that is generated `count_stats.tsv`, contains four columns with 
 | column 2  | Total reads per file |
 | column 3  | Number uniquely mapped reads |
 | column 4  | Number of reads mapped to gene models |
+
+**annotation_lookup.py**
+
+usage: annotation lookup [-h] chrom_file ann_file
+
+Looks up the annotation gene name from a file containing chromosome and
+position outputs a file with the gene name added
+
+positional arguments:
+  chrom_file  chromosome file (path)
+  ann_file    annotation file (path)
+
+optional arguments:
+  -h, --help  show this help message and exit
+
+## Coding tasks
+
+**report_fastq.py -h**
+
+usage: report_fastq.py [-h] [--help] crawl_dir
+
+This script recursively searches through a directory to look for fastq
+files and prints out the file name with the percent of sequences in that
+file that are greater than 30 nucleotides long.
+
+-------------------
+positional argument:
+    crawl_dir   relative or abs path to directory
+
+optional arguments:
+    -h, --help  print this help message and exit
+
+
+
+
+
+

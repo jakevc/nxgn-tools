@@ -1,8 +1,8 @@
 #!/usr/bin/env python3.6
 
 '''
-This script generates two files of statistics after the alignment of RNA-seq
-reads to a reference genome using STAR. The first `counts_per_gene.tsv`
+This script generates two files of statistics after the alignment of paired-end
+RNA-seq reads to a reference genome using STAR. The first `counts_per_gene.tsv`
 contains one column representing the genes in the reference genome. Subsequent
 columns contain gene counts for each file of aligned reads the aligned reads.
 
@@ -75,7 +75,7 @@ with open('count_stats.tsv', 'w') as fh:
 
             # cache stats from data frame
             total_reads = fi.value[0]
-            uniq_reads = fi.value[1]
+            uniq_reads = fi.value[1].strip()
 
             # loop over dir to count reads/gene-model
             for counts in os.listdir():
@@ -85,7 +85,9 @@ with open('count_stats.tsv', 'w') as fh:
                     if name in counts:
                         current = pd.read_csv(
                                     counts, header=None, delimiter='\t')
-                        num_reads_on_gene = sum(current[4:][2])
+
+                        # select 4th column of 'ReadsPerGene.out.tab'
+                        num_reads_on_gene = sum(current[4:][3])
 
                         # write to output file
                         fh.write(f'{name}\t{total_reads}\t\
