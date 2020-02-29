@@ -2,6 +2,32 @@
 
 This repository holds scripts I have written for working with next-generation sequencing (NGS) data. Manuals for each script are described below.
 
+## Genomics_tools 
+
+axtToSyn.py 
+
+This script elongates synteny blocks from a pairwise whole genome alignment, chained and netted and in the .axt file format.
+
+```
+./axtToSyn.py -h
+usage: axtToSyn [-h] file outfile [s] [l]
+
+Generates synteny blocks from pairwise genome alignment .axt file by block
+elongation.
+
+positional arguments:
+  file        Relative path to net.axt alignment file.
+  outfile     Path to output synteny blocks file.
+  s           Min alignment score to be considered for elongation (defalt:
+              1e6)
+  l           Min block len to be considered for elongation (defalt: 2e5)
+
+optional arguments:
+  -h, --help  show this help message and exit
+```
+
+
+
 ## Fasta_tools
 
 **length_dist.py**
